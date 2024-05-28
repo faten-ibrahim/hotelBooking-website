@@ -19,6 +19,10 @@ return new class extends Migration
             $table->decimal('price');
             $table->timestamps();
         });
+
+        Artisan::call('db:seed', [
+            '--class' => RoomsTableSeeder::class
+        ]);
     }
 
     /**
