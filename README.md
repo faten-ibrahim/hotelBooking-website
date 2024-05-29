@@ -19,7 +19,6 @@ installation guide:
 3. risk assesment :
   a. this paragraph wasn't clear enough to me becuse I used web routes not api for the website , so
    to make it easier I used seeder data and php unit test for authentication.
-   =================================================================
    Create a PHP-based API server responsible for mocking authentication of the employee and
    the clients, and for serving mock data, via REST API.
    
