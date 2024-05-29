@@ -26,11 +26,6 @@ return new class extends Migration
 
             $table->timestamps();
         });
-
-        if (!app()->environment('production'))
-            Artisan::call('db:seed', [
-                '--class' => BookingRequestsTableSeeder::class
-            ]);
     }
 
     /**
