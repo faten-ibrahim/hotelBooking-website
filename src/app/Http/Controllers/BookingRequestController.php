@@ -32,4 +32,13 @@ class BookingRequestController extends Controller
         //
     }
 
+    public function ApproveOrReject(Request $request)
+    {
+        if ($bookingRequest = BookingRequest::where('id',$request->id)){
+            $bookingRequest->update(['status' => $request->status]);
+        }
+
+        return redirect()->intended(route('bookingRequests.index', absolute: false));
+
+    }
 }

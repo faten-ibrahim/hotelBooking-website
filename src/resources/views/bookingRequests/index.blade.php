@@ -27,16 +27,18 @@
                         @foreach ($bookingRequests as $request)
                             <tr>
                                 <td class="border px-6 py-4">{{ $request->id }}</td>
-                                <td class="border px-6 py-4">{{ App\Enums\BookingRequestStatus::getKey($request->status) }}</td>
+                                <td class="border px-6 py-4">
+                                    {{ App\Enums\BookingRequestStatus::getKey($request->status) }}</td>
                                 <td class="border px-6 py-4">{{ $request->user->name }}</td>
                                 <td class="border px-6 py-4">{{ $request->room_id }}</td>
                                 <td class="border px-6 py-4">
-                                    <x-responsive-nav-link :href="route('rooms.available')" :active="request()->routeIs('rooms.available')">
+                                    <x-responsive-nav-link :href="route('bookingRequests.ApproveOrReject',['id' => $request->id, 'status' => App\Enums\BookingRequestStatus::Approved])" :active="request()->routeIs('bookingRequests.ApproveOrReject')">
                                         {{ __('Approve') }}
                                     </x-responsive-nav-link>
-                                    <x-responsive-nav-link :href="route('rooms.available')" :active="request()->routeIs('rooms.available')">
+                                    <x-responsive-nav-link :href="route('bookingRequests.ApproveOrReject',['id' => $request->id, 'status' => App\Enums\BookingRequestStatus::Rejected])" :active="request()->routeIs('bookingRequests.ApproveOrReject')">
                                         {{ __('Reject') }}
                                     </x-responsive-nav-link>
+
                                 </td>
                             </tr>
                         @endforeach
