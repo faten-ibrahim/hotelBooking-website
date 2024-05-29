@@ -32,14 +32,25 @@ class BookingRequestController extends Controller
      */
     public function store(Request $request)
     {
-        BookingRequest::create([
-            'status'  => BookingRequestStatus::Pending,
-            'user_id' => auth()->user()->id,
-            'room_id' => $request->roomId
-        ]);
+        if(!empty($request->roomId)){
+            BookingRequest::create([
+                'status'  => BookingRequestStatus::Pending,
+                'user_id' => auth()->user()->id,
+                'room_id' => $request->roomId
+            ]);
+
+            Room::find($request->roomId)->update(['status' => RoomStatus::Pending]);
+        }
+
         return redirect()->intended(route('rooms.available', absolute: false));
     }
 
+    /**
+     * ApproveOrReject
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function ApproveOrReject(Request $request)
     {
         if ($bookingRequest = BookingRequest::where('id',$request->id)->first()){
@@ -47,7 +58,7 @@ class BookingRequestController extends Controller
 
             Room::find($bookingRequest->room_id)->update([
                 'status' => $request->status? RoomStatus::Booked : RoomStatus::Available
-                ]);
+            ]);
         }
 
         return redirect()->intended(route('bookingRequests.index', absolute: false));
