@@ -31,9 +31,21 @@
                                 <td class="border px-6 py-4">{{ App\Enums\RoomType::getKey($room->type) }}</td>
                                 <td class="border px-6 py-4">{{ $room->description }}</td>
                                 <td class="border px-6 py-4">
-                                    <x-responsive-nav-link :href="route('rooms.available')" :active="request()->routeIs('rooms.available')">
-                                        {{ __('Book') }}
-                                    </x-responsive-nav-link>
+
+
+                                    <form name="add-blog-post-form" id="add-blog-post-form" method="post"
+                                        action="{{ route('bookingRequests.store') }}">
+                                        @csrf
+                                        <div class="form-group">
+                                            <input id="roomId" name="roomId" type="hidden"
+                                                value="{{ $room->id }}">
+                                        </div>
+                                        <x-responsive-nav-link :href="route('bookingRequests.store')"
+                                            onclick="event.preventDefault();
+                                                     this.closest('form').submit();">
+                                            {{ __('Book') }}
+                                        </x-responsive-nav-link>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

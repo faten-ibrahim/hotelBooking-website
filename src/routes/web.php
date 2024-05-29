@@ -22,6 +22,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::controller(BookingRequestController::class)->group(function () {
         Route::get('/booking-requests', 'index')->name('bookingRequests.index');
         Route::get('/booking-requests/edit', 'ApproveOrReject')->name('bookingRequests.ApproveOrReject');
+        Route::post('/booking-requests', 'store')->name('bookingRequests.store');
 
     });
 });

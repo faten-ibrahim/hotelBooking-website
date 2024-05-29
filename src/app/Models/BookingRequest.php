@@ -18,7 +18,7 @@ class BookingRequest extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'type',
+        'status',
         'user_id',
         'room_id',
     ];

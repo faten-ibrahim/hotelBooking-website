@@ -10,7 +10,8 @@ use BenSampo\Enum\Enum;
  */
 final class BookingRequestStatus extends Enum
 {
+    const Rejected = 0;
     const Approved = 1;
     const Pending  = 2;
-    const Rejected = 3;
+
 }
