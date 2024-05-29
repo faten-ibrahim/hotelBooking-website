@@ -59,4 +59,15 @@ class User extends Authenticatable
     {
         return $this->hasRole(Role::ADMIN);
     }
+
+
+   /**
+     * bookingRequest
+     *
+     * @return BelongsToMany
+     */
+    public function bookingRequests(): HasMany
+    {
+        $this->hasMany(BookingRequest::class);
+    }
 }

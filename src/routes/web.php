@@ -19,6 +19,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/rooms/available', 'getAvailableRooms')->name('rooms.available');
     });
 
-   
+    Route::controller(BookingRequestController::class)->group(function () {
+        Route::get('/booking-requests', 'index')->name('bookingRequests.index');
+    });
 });
 require __DIR__ . '/auth.php';

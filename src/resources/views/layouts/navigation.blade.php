@@ -20,7 +20,7 @@
                         {{ __('Rooms') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('booking_requests.index')" :active="request()->routeIs('booking_requests.index')">
+                    <x-nav-link :href="route('bookingRequests.index')" :active="request()->routeIs('bookingRequests.index')">
                         {{ __('Reservation Requests') }}
                     </x-nav-link>
 
@@ -82,7 +82,7 @@
                 {{ __('Rooms') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('booking_requests.index')" :active="request()->routeIs('booking_requests.index')">
+            <x-responsive-nav-link :href="route('bookingRequests.index')" :active="request()->routeIs('bookingRequests.index')">
                 {{ __('Reservation Requests') }}
             </x-responsive-nav-link>
         </div>
